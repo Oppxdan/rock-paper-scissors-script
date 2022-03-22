@@ -1,7 +1,64 @@
+const rock = (document.querySelectorAll(".playerSelection"))[0];
+const paper = (document.querySelectorAll(".playerSelection"))[1];
+const scissors = (document.querySelectorAll(".playerSelection"))[2];
+
 let player_wins = 0;
 let computer_wins = 0;
-function computerPlay(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toLowerCase();
+let played_games = 0;
+let stop_game = false;
+let stop_print = false;
+
+rock.addEventListener("click", function () {
+    if (played_games === 5) {
+        console.log("Reload the page to play again!");
+    }
+    else if (played_games < 4) {
+        let playerSelection = "rock";
+        let computerSelection = Math.floor(Math.random() * (["Rock", "Paper", "Scissors"].length));
+        computerPlay(playerSelection, computerSelection);
+    }
+    else if (played_games === 4) {
+        let playerSelection = "rock";
+        let computerSelection = Math.floor(Math.random() * (["Rock", "Paper", "Scissors"].length));
+        computerPlay(playerSelection, computerSelection);
+        gameOver();
+    }
+});
+paper.addEventListener("click", function () {
+    if (played_games === 5) {
+        console.log("Reload the page to play again!");
+    }
+    else if (played_games < 4) {
+        let playerSelection = "paper";
+        let computerSelection = Math.floor(Math.random() * (["Rock", "Paper", "Scissors"].length));
+        computerPlay(playerSelection, computerSelection);
+    }
+    else if (played_games === 4) {
+        let playerSelection = "paper";
+        let computerSelection = Math.floor(Math.random() * (["Rock", "Paper", "Scissors"].length));
+        computerPlay(playerSelection, computerSelection);
+        gameOver();
+    }
+});
+scissors.addEventListener("click", function () {
+    if (played_games === 5) {
+        console.log("Reload the page to play again!");
+    }
+    else if (played_games < 4) {
+        let playerSelection = "scissors";
+        let computerSelection = Math.floor(Math.random() * (["Rock", "Paper", "Scissors"].length));
+        computerPlay(playerSelection, computerSelection);
+    }
+    else if (played_games === 4) {
+        let playerSelection = "scissors";
+        let computerSelection = Math.floor(Math.random() * (["Rock", "Paper", "Scissors"].length));
+        computerPlay(playerSelection, computerSelection);
+        gameOver();
+    }
+});
+
+
+function computerPlay(playerSelection, computerSelection) { 
     if (computerSelection === 0) {
         if (playerSelection === "rock") {
             console.log("Tie! Rock can't beat rock!");
@@ -41,27 +98,23 @@ function computerPlay(playerSelection, computerSelection) {
             console.log("Tie! Scissors can't beat scissors!")
         }
     }
+    played_games = played_games + 1;
 }
 
 
-for (let i = 0; i < 5; i++) {
-    let playerSelection = prompt("Type rock, paper, or scissors: ");
-    let computerSelection = Math.floor(Math.random() * (["Rock", "Paper", "Scissors"].length));
-    computerPlay(playerSelection, computerSelection);
-    /* The computer picks a random number. This number has to be rounded down in order to be
-    an integer. Since Math.random returns a number between 0 and 1 on its own, 
-    I took the length of the list and multiplied it by that number. This makes Math.random return a
-    number between 0 and 3. */ 
+function gameOver() {
+    if (played_games === 5) {
+        console.log("You won " + player_wins + " times. The computer won " 
+        + computer_wins + " times.");
+        if (computer_wins > player_wins) {
+            console.log("The Computer wins!");
+        }
+        else if (player_wins > computer_wins) {
+            console.log("You win!");
+        }
+        else if (player_wins = computer_wins) {
+            console.log("Tie!");
+        }
+    }
 
- }
-
- console.log("You won " + player_wins + " times. The computer won " + computer_wins + " times.")
- if (computer_wins > player_wins) {
-    console.log("The Computer wins!")
- }
- else if (player_wins > computer_wins) {
-    console.log("You win!")
- }
- else if (player_wins = computer_wins) {
-    console.log("Tie!")
- }
+}

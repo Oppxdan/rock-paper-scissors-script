@@ -120,7 +120,7 @@ function gameOver() {
             + player_wins + " - " + computer_wins + " Computer");
         }
         else if (player_wins > computer_wins) {
-            results.innerHTML = ("You win!" + player_wins + " - " 
+            results.innerHTML = ("You win! " + player_wins + " - " 
             + computer_wins + " Computer");
         }
         else if (player_wins = computer_wins) {

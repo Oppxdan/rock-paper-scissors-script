@@ -1,4 +1,5 @@
 function computerPlay(playerSelection, computerSelection) {
+    playerSelection = playerSelection.toLowerCase();
     if (computerSelection === 0) {
         if (playerSelection === "rock") {
             console.log("Tie! Rock can't beat rock!")
@@ -39,4 +40,4 @@ computerPlay(prompt("Type rock, paper, or scissors: "), Math.floor(Math.random()
 /* The computer picks a random number. This number has to be rounded down in order to be
 an integer. Since Math.random returns a number between 0 and 1 on its own, 
 I took the length of the list and multiplied it by that number. This makes Math.random return a
-number between 0 and 3. */
+number between 0 and 3. */ 
